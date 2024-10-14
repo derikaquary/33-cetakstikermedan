@@ -1,5 +1,5 @@
 
-import "./_style/global.css";
+import "./_style/globals.css";
 
 
 export const metadata = {
