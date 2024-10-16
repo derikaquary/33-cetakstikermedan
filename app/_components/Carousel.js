@@ -70,7 +70,7 @@ export default function Carousel() {
 
       {/* Left Arrow */}
       <div
-        className="absolute left-2 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-200 bg-opacity-50 p-2"
+        className="absolute left-2 top-1/2 p-2 bg-gray-200 bg-opacity-50 rounded-full transform -translate-y-1/2 cursor-pointer"
         onClick={goToPrevSlide}
       >
         <FaArrowLeft size={20} />
@@ -78,14 +78,14 @@ export default function Carousel() {
 
       {/* Right Arrow */}
       <div
-        className="absolute right-2 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-200 bg-opacity-50 p-2"
+        className="absolute right-2 top-1/2 p-2 bg-gray-200 bg-opacity-50 rounded-full transform -translate-y-1/2 cursor-pointer"
         onClick={goToNextSlide}
       >
         <FaArrowRight size={20} />
       </div>
 
       {/* Bullets */}
-      <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+      <div className="flex absolute right-0 left-0 bottom-2 justify-center space-x-2">
         {slides.map((_, index) => (
           <div
             key={index}
