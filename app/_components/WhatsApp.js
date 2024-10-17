@@ -5,7 +5,7 @@ export default function WhatsApp() {
   const phoneNumber = "1234567890"; // Example: "6281234567890" for an Indonesian number
 
   return (
-    <div className="fixed bottom-[50px] right-3 rounded-full bg-orange-400 px-2 py-2">
+    <div className="fixed bottom-[50px] right-3 rounded-full bg-orange-600 px-2 py-2 shadow-md shadow-orange-300">
       <a
         href={`https://wa.me/${6281370281883}`}
         target="_blank"
