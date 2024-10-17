@@ -1,7 +1,7 @@
+import { Poppins } from "next/font/google";
 import "./_style/globals.css";
 import Header from "@/app/_components/Header";
-
-import { Poppins } from "next/font/google";
+import WhatsApp from "./_components/WhatsApp";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.className}`}>
         <Header />
         {children}
+        <WhatsApp />
       </body>
     </html>
   );
