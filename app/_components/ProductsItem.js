@@ -8,11 +8,13 @@ export default function ProductsItem({ item }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center gap-2">
       <div className="relative h-[120px] w-[120px]">
-        <Image src={source} alt={alt} fill className="rounded-lg object-fit" />
+        <Image src={source} alt={alt} fill className="object-fit rounded-lg" />
       </div>
-      <p className="text-lg font-semibold text-orange-500 text-center">{name}</p>
+      <p className="text-center text-lg font-semibold leading-tight text-orange-500">
+        {name}
+      </p>
       <p>Harga Rp {formatPrice(price)}</p>
     </div>
   );

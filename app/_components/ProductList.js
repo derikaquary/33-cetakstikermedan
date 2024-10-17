@@ -3,7 +3,7 @@ import { products } from "../_data/productsList";
 
 export default function ProductList() {
   return (
-    <div className="grid grid-cols-2 gap-6 justify-center items-center p-2 w-full">
+    <div className="grid w-full grid-cols-2 items-center justify-center gap-6 gap-y-10 p-2">
       {products.map((item) => (
         <ProductsItem item={item} key={item.id} />
       ))}
