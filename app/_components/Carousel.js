@@ -1,103 +1,92 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Image from "next/image"; // Import the Image component
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 export default function Carousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState("right");
-
-  const slides = [
-    { id: 1, src: "/image1.jpeg", alt: "Slide 1" },
-    { id: 2, src: "/image2.jpeg", alt: "Slide 2" },
-    { id: 3, src: "/image3.jpeg", alt: "Slide 3" },
-    { id: 4, src: "/image4.jpeg", alt: "Slide 4" },
+  const images = [
+    "/image1.jpeg",
+    "/image2.jpeg",
+    "/image3.jpeg",
+    "/image4.jpeg",
   ];
 
-  // Automatic slide change every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection("right"); // New slide comes from the right
-      setCurrentIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
-      );
-    }, 3000);
-    return () => clearInterval(interval); // Clean up on unmount
-  }, [currentIndex, slides.length]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
 
-  // Handle manual navigation (left and right buttons)
-  const goToNextSlide = () => {
-    setDirection("right");
-    setCurrentIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
-    );
+  const slideInterval = 3000; // Time in milliseconds between slides
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % images.length;
+        return nextIndex;
+      });
+    }, slideInterval);
+
+    return () => clearInterval(intervalId);
+  }, [images, slideInterval]);
+
+  const handlePrevSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + images.length) % images.length;
+      return newIndex;
+    });
   };
 
-  const goToPrevSlide = () => {
-    setDirection("left");
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1,
-    );
+  const handleNextSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % images.length;
+      return nextIndex;
+    });
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-4xl">
-      {/* Slide Container */}
-      <div className="relative h-[200px] w-full overflow-hidden">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute top-0 h-full w-full transition-all duration-700 ease-in-out ${
-              index === currentIndex
-                ? direction === "right"
-                  ? "left-0"
-                  : "left-0"
-                : direction === "right"
-                  ? "left-full"
-                  : "-left-full"
-            }`}
-          >
+    <div className="relative h-[200px] w-full overflow-hidden">
+      <div
+        className="relative flex h-full w-full transition-transform duration-500 ease-in-out"
+        ref={carouselRef}
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((image, index) => (
+          <div className="relative h-full w-full flex-shrink-0" key={index}>
+            {" "}
+            {/* Added flex-shrink-0 and relative */}
             <Image
-              src={slide.src}
-              alt={slide.alt}
+              src={image}
+              alt={`Slide ${index + 1}`}
               fill
-              className="object-cover"
+              className="rounded-2xl object-cover"
             />
           </div>
         ))}
       </div>
-
-      {/* Left Arrow */}
-      <div
-        className="absolute left-2 top-1/2 p-2 bg-gray-200 bg-opacity-50 rounded-full transform -translate-y-1/2 cursor-pointer"
-        onClick={goToPrevSlide}
-      >
-        <FaArrowLeft size={20} />
-      </div>
-
-      {/* Right Arrow */}
-      <div
-        className="absolute right-2 top-1/2 p-2 bg-gray-200 bg-opacity-50 rounded-full transform -translate-y-1/2 cursor-pointer"
-        onClick={goToNextSlide}
-      >
-        <FaArrowRight size={20} />
-      </div>
-
-      {/* Bullets */}
-      <div className="flex absolute right-0 left-0 bottom-2 justify-center space-x-2">
-        {slides.map((_, index) => (
+      <div className="absolute bottom-0 flex w-full justify-center space-x-4">
+        {images.map((_, index) => (
           <div
             key={index}
-            className={`h-3 w-3 rounded-full bg-gray-300 ${
-              index === currentIndex ? "bg-gray-900" : ""
-            } cursor-pointer`}
-            onClick={() => {
-              setDirection(index > currentIndex ? "right" : "left");
-              setCurrentIndex(index);
-            }}
+            className={`h-4 w-4 rounded-full bg-gray-300 ${
+              index === currentIndex ? "bg-gray-700" : ""
+            }`}
+            onClick={() => setCurrentIndex(index)}
           ></div>
         ))}
+      </div>
+      <div className="absolute left-0 top-[60px] p-4">
+        <button
+          className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
+          onClick={handlePrevSlide}
+        >
+          {"<"}
+        </button>
+      </div>
+      <div className="absolute right-0 top-[60px] p-4">
+        <button
+          className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
+          onClick={handleNextSlide}
+        >
+          {">"}
+        </button>
       </div>
     </div>
   );
