@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaInstagram, FaTiktok, FaYoutube, FaFacebook } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import logo from "@/public/logo.png";
+import Link from "next/link";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,14 +41,14 @@ function Header() {
     <div className="relative z-[1000] flex w-full max-w-7xl flex-col bg-orange-500">
       {/* Social Media Icons */}
       <div className="flex items-center justify-center gap-3 border-b-[1px] py-2">
-        <FaInstagram color="white" size={20} />
+        <Link href="https://www.instagram.com/cetakstikermedan/"><FaInstagram color="white" size={20} /></Link>
         <FaTiktok color="white" size={20} />
         <FaYoutube color="white" size={20} />
         <FaFacebook color="white" size={20} />
       </div>
 
       {/* Logo and Hamburger Menu */}
-      <div className="flex items-center justify-between px-3 py-2">
+      <div className="flex justify-between items-center px-3 py-2">
         <div className="relative h-[40px] w-[40px]">
           <Image src={logo} alt="company logo" fill className="object-fit" />
         </div>
@@ -55,7 +56,7 @@ function Header() {
           size={30}
           color="white"
           onClick={toggleMenu}
-          className="hamburger cursor-pointer"
+          className="cursor-pointer hamburger"
         />
       </div>
 
@@ -68,7 +69,7 @@ function Header() {
           transition: "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out",
         }}
       >
-        <div className="menu flex flex-col gap-3 bg-black/50 px-3 py-2 text-white">
+        <div className="flex flex-col gap-3 px-3 py-2 text-white menu bg-black/50">
           <div>Home</div>
           <div>Category</div>
           <div>Branch</div>
