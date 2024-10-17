@@ -11,7 +11,7 @@ export default function WhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaWhatsapp size={40} color="black" />
+        <FaWhatsapp size={40} color="white" />
       </a>
     </div>
   );
