@@ -5,7 +5,7 @@ import { BiSupport } from "react-icons/bi";
 
 export default function Service() {
   return (
-    <div className="grid grid-cols-2 rounded-2xl bg-orange-400 text-white">
+    <div className="grid grid-cols-2 text-white bg-orange-400 rounded-2xl shadow-lg shadow-orange-300">
       <div className="flex flex-col items-center p-3">
         <FaCheck size={30} color="black" />
         <p className="w-[70px] text-center text-sm">Premium Quality Product</p>
