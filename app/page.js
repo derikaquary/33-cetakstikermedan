@@ -10,11 +10,11 @@ export default function Home() {
       {/* Big Screen */}
       <div className="hidden max-w-7xl"></div>
       {/* Small Screen */}
-      <div className="flex flex-col gap-5 px-3 mt-3 sm:hidden">
-        <SearchBox />
+      <div className="mt-4 flex flex-col gap-5 px-3 sm:hidden">
         <Carousel />
         <Service />
-        <Products/>
+        <SearchBox />
+        <Products />
       </div>
     </>
   );
