@@ -8,14 +8,38 @@ export default function ProductsItem({ item }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
-      <div className="relative h-[120px] w-[120px]">
-        <Image src={source} alt={alt} fill className="object-fit rounded-lg" />
+    <div>
+      {/* Big Screen */}
+      
+      <div className="hidden flex-col items-center justify-center gap-2 sm:flex">
+        <div className="relative h-[120px] w-[120px]">
+          <Image
+            src={source}
+            alt={alt}
+            fill
+            className="object-fit rounded-lg"
+          />
+        </div>
+        <p className="text-center text-lg font-semibold leading-tight text-orange-500">
+          {name}
+        </p>
+        <p>Harga Rp {formatPrice(price)}</p>
       </div>
-      <p className="text-center text-lg font-semibold leading-tight text-orange-500">
-        {name}
-      </p>
-      <p>Harga Rp {formatPrice(price)}</p>
+      {/* Small Screen */}
+      <div className="flex flex-col items-center justify-center gap-2 sm:hidden">
+        <div className="relative h-[120px] w-[120px]">
+          <Image
+            src={source}
+            alt={alt}
+            fill
+            className="object-fit rounded-lg"
+          />
+        </div>
+        <p className="text-center text-lg font-semibold leading-tight text-orange-500">
+          {name}
+        </p>
+        <p>Harga Rp {formatPrice(price)}</p>
+      </div>
     </div>
   );
 }
