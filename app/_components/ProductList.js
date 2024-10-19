@@ -8,7 +8,7 @@ import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
-  const [isCategoryOpen, setIsCategoryOpen] = useState(true); // State for managing the category list
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false); // State for managing the category list
 
   // Toggle category list visibility
   const toggleCategory = () => {
@@ -29,18 +29,28 @@ export default function ProductList() {
         <div className="mx-auto flex max-w-4xl bg-yellow-400">
           <div className="mt-4 flex h-full w-[300px] flex-col bg-blue-400">
             <div
-              className="flex h-[70px] items-center justify-between bg-teal-400 px-[20px] cursor-pointer"
+              className="flex h-[70px] cursor-pointer items-center justify-between bg-teal-400 px-[20px]"
               onClick={toggleCategory} // Toggle on click
             >
               <p>Categories</p>
               {/* Conditional rendering for arrow direction */}
               {isCategoryOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
             </div>
-            {/* Category list: show/hide based on isCategoryOpen */}
-            {isCategoryOpen && (
+            {/* Category list: apply curtain drop effect */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isCategoryOpen
+                  ? "max-h-[600px] opacity-100"
+                  : "max-h-0 opacity-0"
+              }`}
+              style={{
+                transition:
+                  "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out",
+              }}
+            >
               <div className="bg-light-green-400">
                 <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
-                  category 1 <IoIosArrowForward />
+                  <p>category 1</p> <IoIosArrowForward />
                 </div>
                 <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
                   category 2 <IoIosArrowForward />
@@ -57,8 +67,26 @@ export default function ProductList() {
                 <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
                   category 6 <IoIosArrowForward />
                 </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 7 <IoIosArrowForward />
+                </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 8 <IoIosArrowForward />
+                </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 9 <IoIosArrowForward />
+                </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 10 <IoIosArrowForward />
+                </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 11 <IoIosArrowForward />
+                </div>
+                <div className="flex h-[50px] items-center justify-between px-[20px] accent-light-green-500">
+                  category 12 <IoIosArrowForward />
+                </div>
               </div>
-            )}
+            </div>
           </div>
           <div className="mt-4 grid flex-1 grid-cols-2 items-center justify-center gap-6 gap-y-10 bg-green-400">
             {filteredProducts.length > 0 ? (
