@@ -44,14 +44,17 @@ export default function Carousel() {
   return (
     <>
       {/* Big Screen */}
-      <div className="mx-auto relative hidden h-[300px] w-full max-w-5xl overflow-hidden sm:block">
+      <div className="relative mx-auto hidden h-[300px] w-full overflow-hidden sm:block max-w-4xl">
         <div
           className="relative flex w-full h-full transition-transform duration-500 ease-in-out"
           ref={carouselRef}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((image, index) => (
-            <div className="relative flex-shrink-0 w-full h-full" key={index}>
+            <div
+              className="relative flex-shrink-0 w-full h-full rounded-2xl"
+              key={index}
+            >
               {" "}
               {/* Added flex-shrink-0 and relative */}
               <Image

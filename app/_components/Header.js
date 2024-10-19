@@ -46,7 +46,7 @@ function Header() {
     <div>
       {/* Big Screen */}
       <div className="flex justify-center w-full bg-orange-500">
-        <div className="relative z-[1000] hidden w-full max-w-5xl flex-col bg-orange-500 sm:flex">
+        <div className="relative z-[1000] hidden w-full max-w-4xl flex-col bg-orange-500 sm:flex">
           {/* Social Media Icons */}
           <div className="flex items-center justify-center gap-9 border-b-[1px] py-2">
             <Link
@@ -66,7 +66,7 @@ function Header() {
             </Link>
           </div>
           {/* Logo and Hamburger Menu */}
-          <div className="flex justify-between items-center px-2 py-2">
+          <div className="flex items-center justify-between px-2 py-2">
             <div className="relative h-[50px] w-[50px]">
               <Image
                 src={logo}
@@ -121,7 +121,7 @@ function Header() {
         </div>
 
         {/* Logo and Hamburger Menu */}
-        <div className="flex justify-between items-center px-3 py-2">
+        <div className="flex items-center justify-between px-3 py-2">
           <div className="relative h-[40px] w-[40px]">
             <Image src={logo} alt="company logo" fill className="object-fit" />
           </div>
@@ -143,7 +143,7 @@ function Header() {
           }}
         >
           <div className="flex flex-col gap-3 px-3 py-2 text-white menu bg-black/50">
-            <div className="flex gap-3 items-center">
+            <div className="flex items-center gap-3">
               <FaHome />
               <p>Home</p>
             </div>

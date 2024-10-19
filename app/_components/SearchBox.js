@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 function SearchBox({ searchQuery, setSearchQuery }) {
   return (
-    <div className="relative w-full max-w-md mx-auto mt-5">
+    <div className="relative w-full mx-auto mt-2 sm:max-w-4xl">
       <input
         type="text"
         value={searchQuery || ""} // Ensure it doesn't break if searchQuery is undefined
