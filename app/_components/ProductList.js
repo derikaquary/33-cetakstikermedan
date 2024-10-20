@@ -45,13 +45,13 @@ export default function ProductList() {
   return (
     <div>
       {/* Big Screen */}
-      <div className="hidden w-full p-4 sm:block">
+      <div className="hidden w-full p-4 sm:block ">
         {/* Pass searchQuery and setSearchQuery as props to SearchBox */}
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="mx-auto flex max-w-6xl">
-          <div className="mt-4 flex h-full w-[300px] flex-col">
+        <div className=" mx-auto flex max-w-6xl justify-center">
+          <div className=" mt-4 flex h-full w-[300px] flex-col">
             <div
-              className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px] rounded-t-xl"
+              className=" flex h-[70px]  cursor-pointer items-center justify-between bg-orange-500 px-[20px] "
               onClick={toggleCategory} // Toggle on click
             >
               <p>Categories</p>
@@ -66,7 +66,7 @@ export default function ProductList() {
                   "max-height 0.1s ease-in-out, opacity 0.1s ease-in-out",
               }}
             >
-              <div className="bg-orange-100 rounded-b-xl">
+              <div className="bg-orange-100 ">
                 {/* Rendering of categories */}
                 {[
                   {
@@ -172,15 +172,14 @@ export default function ProductList() {
               </div>
             </div>
           </div>
-
           {/* Conditional Rendering for Right Box */}
-          <div className="flex-1">
+          <div className="flex-1 ">
             {selectedItem ? (
-              <div className="p-4">
+              <div className="p-4 ">
                 <OrderedItem item={selectedItem} />
               </div>
             ) : (
-              <div className="mt-4 grid grid-cols-2 items-center justify-center gap-6 gap-y-10 bg-green-400">
+              <div className="mt-4 grid grid-cols-2 justify-end gap-6 gap-y-10 ">
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map((item) => (
                     <ProductsItem item={item} key={item.id} />
