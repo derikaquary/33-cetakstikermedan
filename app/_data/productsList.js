@@ -4,14 +4,23 @@ export const products = [
     source: "/image1.jpeg",
     alt: "image1",
     name: "Undangan",
+    category: "print lembaran",
     price: 5000,
   },
-  { id: 2, source: "/image2.jpeg", alt: "image2", name: "Logo", price: 4000 },
+  {
+    id: 2,
+    source: "/image2.jpeg",
+    alt: "image2",
+    name: "Logo",
+    category: "print lembaran",
+    price: 4000,
+  },
   {
     id: 3,
     source: "/image3.jpeg",
     alt: "image3",
-    name: "Logo banner",
+    name: "Logo Banner",
+    category: "Stationary",
     price: 8000,
   },
   {
@@ -19,6 +28,7 @@ export const products = [
     source: "/image4.jpeg",
     alt: "image4",
     name: "Plank Pintu",
+    category: "large format",
     price: 10000,
   },
   {
@@ -26,6 +36,7 @@ export const products = [
     source: "/image5.jpeg",
     alt: "image5",
     name: "Stiker Tas",
+    category: "marketing tools",
     price: 12000,
   },
   {
@@ -33,6 +44,7 @@ export const products = [
     source: "/image6.jpeg",
     alt: "image6",
     name: "Booklet",
+    category: "print lembaran",
     price: 22000,
   },
   {
@@ -40,6 +52,7 @@ export const products = [
     source: "/image7.jpeg",
     alt: "image7",
     name: "Stiker Tas Variasi",
+    category: "print lembaran",
     price: 15000,
   },
   {
@@ -47,6 +60,7 @@ export const products = [
     source: "/image8.jpeg",
     alt: "image8",
     name: "Stiker Cap",
+    category: "UMKM",
     price: 2000,
   },
   {
@@ -54,6 +68,7 @@ export const products = [
     source: "/image9.jpeg",
     alt: "image5",
     name: "Piagam",
+    category: "Promo and Gift",
     price: 120000,
   },
 ];
