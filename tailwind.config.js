@@ -18,9 +18,12 @@ const config = {
       backgroundImage: {
         /* backgr: "url('/page 1_5.png')", */
       },
+      screens: {
+        sm: "854px", // Set custom small screen size to 854px
+      },
     },
   },
   plugins: [],
 };
 
-module.exports = withMT(config)
+module.exports = withMT(config);

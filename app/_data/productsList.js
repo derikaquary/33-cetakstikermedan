@@ -28,7 +28,7 @@ export const products = [
     source: "/image4.jpeg",
     alt: "image4",
     name: "Plank Pintu",
-    category: "large format",
+    category: "Stationary",
     price: 10000,
   },
   {
@@ -36,7 +36,7 @@ export const products = [
     source: "/image5.jpeg",
     alt: "image5",
     name: "Stiker Tas",
-    category: "marketing tools",
+    category: "Stationary",
     price: 12000,
   },
   {
@@ -44,7 +44,7 @@ export const products = [
     source: "/image6.jpeg",
     alt: "image6",
     name: "Booklet",
-    category: "print lembaran",
+    category: "Print Kain",
     price: 22000,
   },
   {
@@ -52,7 +52,7 @@ export const products = [
     source: "/image7.jpeg",
     alt: "image7",
     name: "Stiker Tas Variasi",
-    category: "print lembaran",
+    category: "Print Kain",
     price: 15000,
   },
   {
@@ -60,7 +60,7 @@ export const products = [
     source: "/image8.jpeg",
     alt: "image8",
     name: "Stiker Cap",
-    category: "UMKM",
+    category: "Print Kain",
     price: 2000,
   },
   {
@@ -68,7 +68,7 @@ export const products = [
     source: "/image9.jpeg",
     alt: "image5",
     name: "Piagam",
-    category: "Promo and Gift",
+    category: "Large Format",
     price: 120000,
   },
 ];

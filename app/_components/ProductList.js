@@ -48,10 +48,10 @@ export default function ProductList() {
       <div className="hidden w-full p-4 sm:block">
         {/* Pass searchQuery and setSearchQuery as props to SearchBox */}
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="mx-auto flex max-w-4xl">
+        <div className="mx-auto flex max-w-6xl">
           <div className="mt-4 flex h-full w-[300px] flex-col">
             <div
-              className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px]"
+              className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px] rounded-t-xl"
               onClick={toggleCategory} // Toggle on click
             >
               <p>Categories</p>
@@ -66,80 +66,80 @@ export default function ProductList() {
                   "max-height 0.1s ease-in-out, opacity 0.1s ease-in-out",
               }}
             >
-              <div className="bg-orange-100">
+              <div className="bg-orange-100 rounded-b-xl">
                 {/* Rendering of categories */}
                 {[
                   {
-                    name: "category 1",
+                    name: "Print Lembaran",
                     isOpen: isSubCategory1Open,
                     setOpen: setIsSubCategory1Open,
-                    items: ["Undangan", "Logo", "Logo banner"],
+                    items: ["Undangan", "Logo", "Logo Banner", "back"],
                   },
                   {
-                    name: "category 2",
+                    name: "Stationary",
                     isOpen: isSubCategory2Open,
                     setOpen: setIsSubCategory2Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["Plank Pintu", "Stiker Tas", "Booklet", "back"],
                   },
                   {
-                    name: "category 3",
+                    name: "Print Kain",
                     isOpen: isSubCategory3Open,
                     setOpen: setIsSubCategory3Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["Stiker Tas Variasi", "Stiker Cap", "Piagam", "back"],
                   },
                   {
-                    name: "category 4",
+                    name: "Large Format",
                     isOpen: isSubCategory4Open,
                     setOpen: setIsSubCategory4Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 5",
+                    name: "Promo and Gift",
                     isOpen: isSubCategory5Open,
                     setOpen: setIsSubCategory5Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 6",
+                    name: "Foto",
                     isOpen: isSubCategory6Open,
                     setOpen: setIsSubCategory6Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 7",
+                    name: "Marketing Tools",
                     isOpen: isSubCategory7Open,
                     setOpen: setIsSubCategory7Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 8",
+                    name: "Printerior",
                     isOpen: isSubCategory8Open,
                     setOpen: setIsSubCategory8Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 9",
+                    name: "Coworking Space",
                     isOpen: isSubCategory9Open,
                     setOpen: setIsSubCategory9Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 10",
+                    name: "Signage",
                     isOpen: isSubCategory10Open,
                     setOpen: setIsSubCategory10Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 11",
+                    name: "Packing",
                     isOpen: isSubCategory11Open,
                     setOpen: setIsSubCategory11Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                   {
-                    name: "category 12",
+                    name: "UMKM",
                     isOpen: isSubCategory12Open,
                     setOpen: setIsSubCategory12Open,
-                    items: ["item 1", "item 2", "item 3"],
+                    items: ["item 1", "item 2", "item 3", "back"],
                   },
                 ].map(({ name, isOpen, setOpen, items }, idx) => (
                   <div className="flex flex-col" key={idx}>
@@ -176,7 +176,7 @@ export default function ProductList() {
           {/* Conditional Rendering for Right Box */}
           <div className="flex-1">
             {selectedItem ? (
-              <div className="bg-blue-400 p-4">
+              <div className="p-4">
                 <OrderedItem item={selectedItem} />
               </div>
             ) : (

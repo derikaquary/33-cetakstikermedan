@@ -10,9 +10,9 @@ export default function ProductsItem({ item }) {
   return (
     <div>
       {/* Big Screen */}
-      
+
       <div className="hidden flex-col items-center justify-center gap-2 sm:flex">
-        <div className="relative h-[120px] w-[120px]">
+        <div className="relative h-[250px] w-[250px]">
           <Image
             src={source}
             alt={alt}
