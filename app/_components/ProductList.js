@@ -11,6 +11,7 @@ import { products } from "../_data/productsList";
 import NewProductsDisplay from "./NewProductsDisplay";
 import About from "./About";
 import AboutContent from "./AboutContent";
+import LatestArticle from "./LatestArticle";
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
@@ -46,6 +47,10 @@ export default function ProductList() {
         <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <About />
           <AboutContent />
+        </div>
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <LatestArticle />
+          
         </div>
       </div>
 

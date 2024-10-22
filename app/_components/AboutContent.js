@@ -6,8 +6,7 @@ export default function AboutContent() {
       </h2>
       <p className="text-justify text-lg">
         Cetak Stiker Medan adalah layanan digital printing dan percetakan dengan
-        tagline &#34;Sang Pencetak Sukses Anda,&#34; memiliki cabang yang
-        tersebar di seluruh Indonesia. Kami melayani berbagai kebutuhan
+        tagline &#34;Sang Pencetak Sukses Anda,&#34;. Kami melayani berbagai kebutuhan
         printing, jasa desain grafis, percetakan, fotokopi, hingga coworking
         space di tempat kami. Mulai dari brosur, poster berbagai jenis dan
         ukuran, cetak foto, ID Card, stempel, kop surat, nota, spanduk, banner,
