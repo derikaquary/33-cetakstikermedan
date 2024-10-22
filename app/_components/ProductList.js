@@ -9,6 +9,8 @@ import CategorySidebar from "./CategorySidebar";
 import ProductDisplay from "./ProductDisplay"; // Import ProductDisplay
 import { products } from "../_data/productsList";
 import NewProductsDisplay from "./NewProductsDisplay";
+import About from "./About";
+import AboutContent from "./AboutContent";
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
@@ -29,21 +31,21 @@ export default function ProductList() {
     <div>
       {/* Big Screen */}
       <div className="hidden w-full p-4 sm:block">
-        {/* Pass searchQuery and setSearchQuery as props to SearchBox */}
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <div className="mx-auto flex max-w-6xl justify-center">
-          {/* Category Sidebar */}
           <CategorySidebar handleItemClick={handleItemClick} />
-          {/* Right Box - Using the new ProductDisplay component */}
-          <ProductDisplay 
+          <ProductDisplay
             selectedItem={selectedItem}
             filteredProducts={filteredProducts}
           />
         </div>
-        {/* New Proucts Section */}
         <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <NewProducts />
-          <NewProductsDisplay/>
+          <NewProductsDisplay />
+        </div>
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <About />
+          <AboutContent />
         </div>
       </div>
 
@@ -51,7 +53,7 @@ export default function ProductList() {
       <div className="w-full p-4 sm:hidden">
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <div>
-          <div className=" mt-4 grid grid-cols-2 justify-center gap-6">
+          <div className="mt-4 grid grid-cols-2 justify-center gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item) => (
                 <ProductsItem item={item} key={item.id} />
@@ -63,10 +65,10 @@ export default function ProductList() {
             )}
           </div>
           {/* New Proucts Section */}
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
-          <NewProducts />
-          <NewProductsDisplay/>
-        </div>
+          <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+            <NewProducts />
+            <NewProductsDisplay />
+          </div>
         </div>
       </div>
     </div>
