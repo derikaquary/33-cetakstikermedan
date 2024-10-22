@@ -44,7 +44,7 @@ export default function Carousel() {
   return (
     <>
       {/* Big Screen */}
-      <div className="relative mx-auto hidden h-[300px] w-full overflow-hidden sm:block max-w-4xl">
+      <div className="relative mx-auto hidden h-[300px] w-full overflow-hidden sm:block max-w-6xl">
         <div
           className="relative flex w-full h-full transition-transform duration-500 ease-in-out"
           ref={carouselRef}

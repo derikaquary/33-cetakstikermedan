@@ -7,7 +7,7 @@ export default function Service() {
   return (
     <div>
       {/* Big Screen */}
-      <div className="hidden w-full items-center justify-between bg-orange-400 px-[150px] text-white shadow-lg shadow-orange-300 max-w-4xl sm:flex rounded-2xl mx-auto">
+      <div className="hidden w-full items-center justify-between bg-orange-400 px-[150px] text-white shadow-lg shadow-orange-300 max-w-6xl sm:flex rounded-2xl mx-auto">
         <div className="flex flex-col items-center p-3">
           <FaCheck size={40} color="black" />
           <p className="w-[70px] text-center text-sm">

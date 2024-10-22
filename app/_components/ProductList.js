@@ -79,6 +79,10 @@ export default function ProductList() {
           <About />
           <AboutContent />
         </div>
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <LatestArticle />
+          
+        </div>
       </div>
     </div>
   );

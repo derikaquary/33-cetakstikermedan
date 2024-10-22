@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import Carousel from "./_components/Carousel";
 import Service from "./_components/Service";
 import Products from "./_components/Products";
+import Footer from "./_components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,6 +15,8 @@ export default function Home() {
       <Carousel />
       <Service />
       <Products />
+      <Footer/>
+
     </div>
   );
 }
