@@ -33,7 +33,7 @@ export default function ProductList() {
       {/* Big Screen */}
       <div className="hidden w-full p-4 sm:block">
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="mx-auto flex max-w-6xl justify-center">
+        <div className=" mx-auto flex max-w-4xl  justify-between">
           <CategorySidebar handleItemClick={handleItemClick} />
           <ProductDisplay
             selectedItem={selectedItem}
@@ -48,7 +48,7 @@ export default function ProductList() {
           <About />
           <AboutContent />
         </div>
-        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-4xl flex-col items-center justify-center gap-3">
           <LatestArticle />
           
         </div>

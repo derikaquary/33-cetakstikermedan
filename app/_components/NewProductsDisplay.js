@@ -3,7 +3,7 @@ import ProductsItem from "./ProductsItem";
 
 export default function NewProductsDisplay() {
   return (
-    <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 justify-end gap-6 gap-y-10">
+    <div className="mt-4 grid grid-cols-2 sm:grid-cols-5 justify-end gap-6 gap-y-10">
       {products.map((item) => (
         <ProductsItem item={item} key={item.id} />
       ))}

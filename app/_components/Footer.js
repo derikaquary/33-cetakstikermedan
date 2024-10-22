@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="grid grid-cols-1 sm:flex bg-gray-800 items-center justify-between py-5 px-5 w-full max-w-7xl mx-auto gap-y-9">
+    <div className="grid grid-cols-1 sm:flex bg-gray-800 justify-center py-5 px-5 w-full max-w-7xl mx-auto gap-y-9 sm:gap-[200px]">
       <div className="flex flex-col gap-1 ">
         <p className="text-2xl text-white font-semibold">Popular Links</p>
         <p className="text-white">Contact Us</p>

@@ -16,8 +16,8 @@ export const article = [
     {
         id:"3",
         source:"/copy_machine.jpg",
-        alt:"Keuntungan Dekat dengan Tempat Fotocopy Terpercaya",
-        title: "Title",
+        alt:"copy machine image",
+        title: "Keuntungan Dekat dengan Tempat Fotocopy Terpercaya",
         text: ""
     },
     {
