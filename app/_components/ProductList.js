@@ -40,6 +40,7 @@ export default function ProductList() {
             filteredProducts={filteredProducts}
           />
         </div>
+        {/* New Proucts Section */}
         <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <NewProducts />
           <NewProductsDisplay/>
@@ -61,10 +62,11 @@ export default function ProductList() {
               </p>
             )}
           </div>
-          <TextInfo />
-          <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
-            <NewProducts />
-          </div>
+          {/* New Proucts Section */}
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <NewProducts />
+          <NewProductsDisplay/>
+        </div>
         </div>
       </div>
     </div>
