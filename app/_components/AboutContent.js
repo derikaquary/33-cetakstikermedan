@@ -1,7 +1,7 @@
 export default function AboutContent() {
   return (
     <div className="flex flex-col items-center justify-center gap-3">
-      <h2 className="text-xl text-gray-600">
+      <h2 className="text-xl text-gray-600 text-center">
         THE BEST PLACE TO DESIGN & PRINT
       </h2>
       <p className="text-justify text-lg">

@@ -70,6 +70,10 @@ export default function ProductList() {
             <NewProductsDisplay />
           </div>
         </div>
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <About />
+          <AboutContent />
+        </div>
       </div>
     </div>
   );
