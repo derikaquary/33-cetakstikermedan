@@ -1,15 +1,15 @@
 export default function TextInfo() {
   return (
-    <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
+    <div className="mx-auto mt-7 flex w-full max-w-6xl flex-col items-center justify-center gap-3">
           <h1 className="text-center text-2xl font-bold text-orange-500">
             Cetak Brosur
           </h1>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 text-justify">
             <h2 className="text-xl font-bold text-orange-500">
               Mencetak Brosur Merupakan Metode Paling Efisien untuk Promosi dan
               Iklan
             </h2>
-            <p>
+            <p >
               Brosur adalah media yang digunakan untuk memberikan informasi
               mengenai berbagai acara, seperti acara musik, komunitas, atau
               kegiatan sosial. Salah satu hal penting yang dibutuhkan oleh
