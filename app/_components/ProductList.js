@@ -40,15 +40,15 @@ export default function ProductList() {
             filteredProducts={filteredProducts}
           />
         </div>
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <NewProducts />
           <NewProductsDisplay />
         </div>
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <About />
           <AboutContent />
         </div>
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <LatestArticle />
           
         </div>
@@ -70,16 +70,16 @@ export default function ProductList() {
             )}
           </div>
           {/* New Proucts Section */}
-          <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
             <NewProducts />
             <NewProductsDisplay />
           </div>
         </div>
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <About />
           <AboutContent />
         </div>
-        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+        <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <LatestArticle />
           
         </div>

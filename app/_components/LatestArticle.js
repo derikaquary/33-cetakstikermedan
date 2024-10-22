@@ -33,8 +33,8 @@ export default function LatestArticle() {
   return (
     <>
       {/* Big Screen */}
-      <div className="hidden sm:flex w-full justify-center bg-gray-200 px-4 py-10">
-        <div className="w-full sm:max-w-4xl flex flex-col gap-4">
+      <div className="hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex">
+        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
           <div className="hidden items-center justify-center gap-8 sm:mx-auto sm:flex sm:w-full">
             <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
             <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
@@ -52,7 +52,7 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {article.map((item) => (
-              <div key={item.id} className="flex-shrink-0 w-[300px]">
+              <div key={item.id} className="w-[300px] flex-shrink-0">
                 <ArticleItem item={item} />
               </div>
             ))}
@@ -61,13 +61,13 @@ export default function LatestArticle() {
       </div>
       {/* Small Screen */}
       <div className="flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden">
-        <div className="w-full sm:max-w-4xl flex flex-col gap-4">
-          <div className="hidden items-center justify-center gap-8 sm:mx-auto sm:flex sm:w-full">
-            <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
+        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
+          <div className="flex items-center justify-center gap-8 sm:mx-auto sm:hidden sm:w-full sm:max-w-4xl">
+            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
             <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
               Latest Article
             </div>
-            <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
+            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
           </div>
           {/* Horizontal scrolling container */}
           <div
@@ -79,7 +79,7 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {article.map((item) => (
-              <div key={item.id} className="flex-shrink-0 w-[300px]">
+              <div key={item.id} className="w-[300px] flex-shrink-0">
                 <ArticleItem item={item} />
               </div>
             ))}
