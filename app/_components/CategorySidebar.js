@@ -99,7 +99,7 @@ export default function CategorySidebar({ handleItemClick }) {
   ];
 
   return (
-    <div className="mt-4 flex h-full w-[300px] flex-col bg-purple-400">
+    <div className="mt-4 flex h-full w-[300px] flex-col ">
       <div
         className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px]"
         onClick={toggleCategory} // Toggle on click

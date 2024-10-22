@@ -10,13 +10,13 @@ export const article = [
         id:"2",
         source:"/name_card.jpg",
         alt:"name card image",
-        title: "Title",
+        title: "Desain Kartu Nama dengan Berbagai Warna Latar",
         text: ""
     },
     {
         id:"3",
         source:"/copy_machine.jpg",
-        alt:"copy machine image",
+        alt:"Keuntungan Dekat dengan Tempat Fotocopy Terpercaya",
         title: "Title",
         text: ""
     },
