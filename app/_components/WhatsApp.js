@@ -6,7 +6,7 @@ export default function WhatsApp() {
 
   return (
     <>
-    {/* Bi Screen */}
+    {/* Big Screen */}
     <div className="hidden sm:block fixed bottom-[50px] right-3 rounded-full bg-orange-600 px-2 py-2">
       <a
         href={`https://wa.me/${6281370281883}`}
@@ -23,7 +23,7 @@ export default function WhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaWhatsapp size={20} color="white" />
+        <FaWhatsapp size={30} color="white" />
       </a>
     </div>
     </>
