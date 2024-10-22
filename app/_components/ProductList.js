@@ -6,6 +6,9 @@ import { products } from "../_data/productsList";
 import SearchBox from "./SearchBox";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import OrderedItem from "./OrderedItem";
+import TextInfo from "./TextInfo";
+import SuggestedProducts from "./SuggestedProducts";
+
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
@@ -45,13 +48,13 @@ export default function ProductList() {
   return (
     <div>
       {/* Big Screen */}
-      <div className="hidden w-full p-4 sm:block ">
+      <div className="hidden w-full p-4 sm:block">
         {/* Pass searchQuery and setSearchQuery as props to SearchBox */}
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className=" mx-auto flex max-w-6xl justify-center">
-          <div className=" mt-4 flex h-full w-[300px] flex-col">
+        <div className="mx-auto flex max-w-6xl justify-center">
+          <div className="mt-4 flex h-full w-[300px] flex-col bg-purple-400">
             <div
-              className=" flex h-[70px]  cursor-pointer items-center justify-between bg-orange-500 px-[20px] "
+              className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px]"
               onClick={toggleCategory} // Toggle on click
             >
               <p>Categories</p>
@@ -66,7 +69,7 @@ export default function ProductList() {
                   "max-height 0.1s ease-in-out, opacity 0.1s ease-in-out",
               }}
             >
-              <div className="bg-orange-100 ">
+              <div className="bg-orange-100">
                 {/* Rendering of categories */}
                 {[
                   {
@@ -85,7 +88,12 @@ export default function ProductList() {
                     name: "Print Kain",
                     isOpen: isSubCategory3Open,
                     setOpen: setIsSubCategory3Open,
-                    items: ["Stiker Tas Variasi", "Stiker Cap", "Piagam", "back"],
+                    items: [
+                      "Stiker Tas Variasi",
+                      "Stiker Cap",
+                      "Piagam",
+                      "back",
+                    ],
                   },
                   {
                     name: "Large Format",
@@ -173,13 +181,13 @@ export default function ProductList() {
             </div>
           </div>
           {/* Conditional Rendering for Right Box */}
-          <div className="flex-1 ">
+          <div className="flex-1">
             {selectedItem ? (
-              <div className="p-4 ">
+              <div className="p-4">
                 <OrderedItem item={selectedItem} />
               </div>
             ) : (
-              <div className="mt-4 grid grid-cols-2 justify-end gap-6 gap-y-10 ">
+              <div className="mt-4 grid grid-cols-3 justify-end gap-6 gap-y-10">
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map((item) => (
                     <ProductsItem item={item} key={item.id} />
@@ -192,6 +200,11 @@ export default function ProductList() {
               </div>
             )}
           </div>
+        </div>
+        <TextInfo/>
+        <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
+          <SuggestedProducts/>
+          
         </div>
       </div>
 
@@ -209,6 +222,46 @@ export default function ProductList() {
               No products found.
             </p>
           )}
+        </div>
+        {/* Text info */}
+        <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
+          <h1 className="text-center text-2xl font-bold">Cetak Brosur</h1>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-xl font-bold">
+              Mencetak Brosur Merupakan Metode Paling Efisien untuk Promosi dan
+              Iklan
+            </h2>
+            <p>
+              Brosur adalah media yang digunakan untuk memberikan informasi
+              mengenai berbagai acara, seperti acara musik, komunitas, atau
+              kegiatan sosial. Salah satu hal penting yang dibutuhkan oleh
+              panitia adalah mencetak brosur atau flyer yang dapat dibagikan
+              kepada masyarakat atau ditempel di pusat informasi. Selain itu,
+              brosur sering dimanfaatkan oleh perusahaan untuk menyampaikan
+              informasi tentang promo yang sedang berlangsung.
+            </p>
+            <p>
+              Apakah Anda sedang mencari layanan digital printing untuk mencetak
+              brosur dengan harga terjangkau? Snapy tidak hanya menawarkan harga
+              murah, tetapi juga memberikan hasil cetak brosur dengan kualitas
+              terbaik. Brosur berkualitas tinggi sangat penting untuk mendukung
+              citra perusahaan Anda. Kami juga memberikan garansi layanan jika
+              Anda merasa tidak puas dengan hasil cetakan kami.
+            </p>
+            <p>
+              Jika Anda memiliki kesibukan, tidak perlu khawatir! Anda bisa
+              mencetak brosur tanpa perlu datang langsung ke cabang kami.
+              Melalui halaman ini, Anda dapat mengunggah file desain brosur yang
+              siap cetak dalam ukuran A5, A4, dan A6 dengan minimal pemesanan
+              satu rim. Tim kami yang berpengalaman akan segera menghubungi
+              Anda, sehingga Anda tidak perlu repot mengantre di cabang. Setelah
+              pembayaran dilakukan, brosur Anda akan dicetak menggunakan mesin
+              cetak termutakhir yang kualitasnya lebih unggul daripada cetak
+              offset. Dengan teknologi tinta 6 warna, kami dapat menghasilkan
+              cetakan dengan detail skin tone dan true black yang akurat,
+              menjadikan hasil brosur berkualitas tinggi dan resolusi tajam.
+            </p>
+          </div>
         </div>
       </div>
     </div>

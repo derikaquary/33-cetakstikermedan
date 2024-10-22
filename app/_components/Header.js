@@ -76,10 +76,10 @@ function Header() {
               />
             </div>
             <div className="flex gap-6 py-2 text-white">
-              <div className="flex gap-1">
+              <Link href="/" className="flex gap-1">
                 <FaHome />
                 <p className="text-sm">Home</p>
-              </div>
+              </Link>
               <div className="flex gap-1">
                 <BiCategory />
                 <p className="text-sm">Category</p>
@@ -143,10 +143,10 @@ function Header() {
           }}
         >
           <div className="flex flex-col gap-3 px-3 py-2 text-white menu bg-black/50">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <FaHome />
               <p>Home</p>
-            </div>
+            </Link>
             <div className="flex gap-3 first:items-center">
               <BiCategory />
               <p>Category</p>
