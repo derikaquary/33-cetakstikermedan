@@ -4,10 +4,11 @@ import { useState } from "react";
 import ProductsItem from "./ProductsItem"; // Import ProductsItem
 import SearchBox from "./SearchBox";
 import TextInfo from "./TextInfo";
-import SuggestedProducts from "./SuggestedProducts";
+import NewProducts from "./NewProducts";
 import CategorySidebar from "./CategorySidebar";
 import ProductDisplay from "./ProductDisplay"; // Import ProductDisplay
 import { products } from "../_data/productsList";
+import NewProductsDisplay from "./NewProductsDisplay";
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
@@ -39,9 +40,9 @@ export default function ProductList() {
             filteredProducts={filteredProducts}
           />
         </div>
-        <TextInfo />
-        <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
-          <SuggestedProducts />
+        <div className="mx-auto mt-[70px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
+          <NewProducts />
+          <NewProductsDisplay/>
         </div>
       </div>
 
@@ -62,7 +63,7 @@ export default function ProductList() {
           </div>
           <TextInfo />
           <div className="mx-auto mt-7 flex w-full max-w-4xl flex-col items-center justify-center gap-3">
-            <SuggestedProducts />
+            <NewProducts />
           </div>
         </div>
       </div>
