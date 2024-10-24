@@ -34,6 +34,9 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+
+        {/* Google Site Verification for Search Console */}
+        <meta name="google-site-verification" content="googleb2036ba6f7e1181a" />
       </Head>
       <body className={`${poppins.className}`}>
         {/* Google Tag Manager (noscript) */}
