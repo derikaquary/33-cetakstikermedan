@@ -19,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 
         {/* Google Site Verification for Search Console */}
         <meta name="google-site-verification" content="googleb2036ba6f7e1181a" />
-      </Head>
+      </head>
       <body className={`${poppins.className}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
