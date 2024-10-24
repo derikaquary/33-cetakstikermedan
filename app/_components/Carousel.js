@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 export default function Carousel() {
-  const images = [
+  // Memoize the images array to prevent it from being recreated on every render
+  const images = useMemo(() => [
     "/image1.jpeg",
     "/image2.jpeg",
     "/image3.jpeg",
     "/image4.jpeg",
-  ];
+  ], []); // Add an empty array as the second argument to memoize it only once
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
@@ -25,7 +26,7 @@ export default function Carousel() {
     }, slideInterval);
 
     return () => clearInterval(intervalId);
-  }, [images, slideInterval]);
+  }, [images, slideInterval]); // 'images' is now memoized, no unnecessary re-renders
 
   const handlePrevSlide = () => {
     setCurrentIndex((prevIndex) => {
