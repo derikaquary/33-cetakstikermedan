@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import TestSupabaseConnection from "../_components/TestSupabaseConnection";
 
 export default function Admin() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
   const [status, setStatus] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,13 +49,17 @@ export default function Admin() {
         imageUrl = data.path;
       }
 
-      // 2. Insert the product data
+      // 2. Insert the product data with alt set to product name
       const { error } = await supabase
         .from("products")
-        .insert([{ name, price, image_url: imageUrl }]);
+        .insert([{ name, price, category, image_url: imageUrl, alt: name }]); // `alt` is automatically set to `name`
 
       if (error) throw error;
       setStatus("Product added successfully!");
+      setName("");
+      setPrice("");
+      setCategory("");
+      setImage(null);
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }
@@ -67,15 +71,14 @@ export default function Admin() {
       console.error("Error logging out:", error.message);
     } else {
       setIsAuthenticated(false);
-      router.push("/login"); // Redirect to login page after logout
+      router.push("/login");
     }
   };
 
-  if (!isAuthenticated) return <p>Loading...</p>; // Show loading while checking auth
+  if (!isAuthenticated) return <p>Loading...</p>;
 
   return (
     <div className="container">
-      <TestSupabaseConnection />
       <h1>Admin Interface - Add Product</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -92,9 +95,19 @@ export default function Admin() {
           Price:
           <input
             className="bg-red-400"
-            type="text"
+            type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Category:
+          <input
+            className="bg-yellow-400"
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             required
           />
         </label>
@@ -103,7 +116,9 @@ export default function Admin() {
           <input
             className="bg-blue-400"
             type="file"
+            accept="image/*"
             onChange={handleImageUpload}
+            required
           />
         </label>
         <button className="border-2 border-black" type="submit">

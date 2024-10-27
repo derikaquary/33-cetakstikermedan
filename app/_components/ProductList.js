@@ -1,39 +1,62 @@
 "use client";
 
-import { useState } from "react";
-import ProductsItem from "./ProductsItem"; // Import ProductsItem
+import { useState, useEffect } from "react";
+import ProductsItem from "./ProductsItem";
 import SearchBox from "./SearchBox";
-import TextInfo from "./TextInfo";
 import NewProducts from "./NewProducts";
 import CategorySidebar from "./CategorySidebar";
-import ProductDisplay from "./ProductDisplay"; // Import ProductDisplay
-import { products } from "../_data/productsList";
+import ProductDisplay from "./ProductDisplay";
 import NewProductsDisplay from "./NewProductsDisplay";
 import About from "./About";
 import AboutContent from "./AboutContent";
 import LatestArticle from "./LatestArticle";
+import { supabase } from "@/lib/supabase"; // Ensure supabase client is correctly imported
 
 export default function ProductList() {
-  const [searchQuery, setSearchQuery] = useState(""); // State for managing the search query
-  const [selectedItem, setSelectedItem] = useState(null); // State for managing the selected item
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [products, setProducts] = useState([]); // State for storing products from Supabase
+  const [loading, setLoading] = useState(true); // State for loading
+
+  useEffect(() => {
+    // Fetch products from Supabase
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase.from("products").select("*"); // Fetch all products
+        if (error) throw error;
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  console.log(products)
 
   // Handle item click
   const handleItemClick = (itemName) => {
     const item = products.find((product) => product.name === itemName);
-    setSelectedItem(item); // Set the selected item
+    setSelectedItem(item);
   };
 
   // Filter products based on the search query
   const filteredProducts = products.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (loading) return <p>Loading products...</p>; // Show loading while fetching data
 
   return (
     <div>
       {/* Big Screen */}
       <div className="hidden w-full p-4 sm:block">
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className=" mx-auto flex max-w-4xl  justify-between">
+        <div className="mx-auto flex max-w-4xl justify-between">
           <CategorySidebar handleItemClick={handleItemClick} />
           <ProductDisplay
             selectedItem={selectedItem}
@@ -50,7 +73,6 @@ export default function ProductList() {
         </div>
         <div className="mx-auto mt-[40px] flex w-full max-w-4xl flex-col items-center justify-center gap-3">
           <LatestArticle />
-          
         </div>
       </div>
 
@@ -69,7 +91,7 @@ export default function ProductList() {
               </p>
             )}
           </div>
-          {/* New Proucts Section */}
+          {/* New Products Section */}
           <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
             <NewProducts />
             <NewProductsDisplay />
@@ -81,7 +103,6 @@ export default function ProductList() {
         </div>
         <div className="mx-auto mt-[40px] flex w-full max-w-7xl flex-col items-center justify-center gap-3">
           <LatestArticle />
-          
         </div>
       </div>
     </div>
