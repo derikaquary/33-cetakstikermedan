@@ -53,7 +53,7 @@ export default function CategorySidebar({ handleItemClick }) {
         onClick={() => setOpenCategories((prev) => !prev)}
       >
         <p>Categories</p>
-        {Object.values(openCategories).includes(true) ? <IoIosArrowDown /> : <IoIosArrowForward />}
+        {/* {Object.values(openCategories).includes(true) ? <IoIosArrowDown /> : <IoIosArrowForward />} */}
       </div>
 
       {categories.length > 0 ? (

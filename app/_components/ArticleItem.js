@@ -1,16 +1,16 @@
 import Image from "next/image";
 
 export default function ArticleItem({ item }) {
-  const { source, alt, title, text } = item;
+  const { image_url, alt, title, text } = item;
 
   return (
     <div className="flex-shrink-0 flex h-[200px] w-[300px] flex-col items-center justify-center">
       {/* Image Container */}
-      <div className="relative h-full w-full overflow-hidden rounded-lg">
-        <div className="group relative h-full w-full">
+      <div className="relative w-full h-full overflow-hidden rounded-lg">
+        <div className="relative w-full h-full group">
           {/* Image with hover effect */}
           <Image
-            src={source}
+            src={image_url}
             alt={alt}
             fill
             className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" // Apply scale on hover
