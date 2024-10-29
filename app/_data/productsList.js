@@ -44,7 +44,7 @@ export const products = [
     source: "/image6.jpeg",
     alt: "image6",
     name: "Booklet",
-    category: "Print Kain",
+    category: "Stationary",
     price: 22000,
   },
   {
