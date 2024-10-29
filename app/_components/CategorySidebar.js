@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { supabase } from "@/lib/supabase";
 
-
 export default function CategorySidebar({ handleItemClick }) {
   const [categories, setCategories] = useState([]);
   const [openCategories, setOpenCategories] = useState({}); // Track open/close state per category
@@ -33,7 +32,7 @@ export default function CategorySidebar({ handleItemClick }) {
         name: category,
         items: groupedCategories[category],
       }));
-      
+
       setCategories(categoriesArray);
     };
 
@@ -51,7 +50,7 @@ export default function CategorySidebar({ handleItemClick }) {
     <div className="mt-4 flex h-full w-[300px] flex-col">
       <div
         className="flex h-[70px] cursor-pointer items-center justify-between bg-orange-500 px-[20px]"
-        onClick={() => setOpenCategories((prev) => !prev)} 
+        onClick={() => setOpenCategories((prev) => !prev)}
       >
         <p>Categories</p>
         {Object.values(openCategories).includes(true) ? <IoIosArrowDown /> : <IoIosArrowForward />}
@@ -82,6 +81,13 @@ export default function CategorySidebar({ handleItemClick }) {
                     {item}
                   </p>
                 ))}
+                {/* Add a "back" button after the last item */}
+                <p
+                  className="cursor-pointer pl-[50px] text-blue-500"
+                  onClick={() => handleItemClick("all")}
+                >
+                  Back to All Products
+                </p>
               </div>
             </div>
           ))}
