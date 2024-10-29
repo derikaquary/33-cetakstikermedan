@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import { createClient } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 
 
