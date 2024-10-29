@@ -34,8 +34,6 @@ export default function ProductList() {
           if (!imageUrl.includes("https://")) {
             imageUrl = `${supabaseUrl}/storage/v1/object/public/product-images/${product.image_url}`;
           }
-          
-          console.log(`Generated URL for product ${product.name}:`, imageUrl); // Log the URL for debugging
 
           return { ...product, image_url: imageUrl };
         });
@@ -59,7 +57,7 @@ export default function ProductList() {
 
   // Filter products based on the search query
   const filteredProducts = products.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    item.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   if (loading) return <p>Loading products...</p>; // Show loading while fetching data

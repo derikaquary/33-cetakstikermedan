@@ -2,7 +2,6 @@ import Image from "next/image";
 
 export default function ProductsItem({ item }) {
   const { image_url, alt, name, price } = item;
-  console.log(image_url)
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("id-ID").format(price); // Formats using Indonesian locale for "dot" thousand separators
