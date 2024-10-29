@@ -18,7 +18,7 @@ export default function ArticleItem({ item }) {
         </div>
       </div>
       <p className="mt-2 font-semibold">{title}</p>
-      <p className="text-gray-500">{text}</p>
+      {/* <p className="text-gray-500">{text}</p> */}
     </div>
   );
 }
