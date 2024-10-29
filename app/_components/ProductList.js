@@ -1,3 +1,4 @@
+// ProductList.js
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,7 +11,7 @@ import NewProductsDisplay from "./NewProductsDisplay";
 import About from "./About";
 import AboutContent from "./AboutContent";
 import LatestArticle from "./LatestArticle";
-import { supabase } from "@/lib/supabase"; // Ensure supabase client is correctly imported
+import { supabase, supabaseUrl } from "@/lib/supabase"; // Ensure supabase client is correctly imported
 
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,7 +26,21 @@ export default function ProductList() {
       try {
         const { data, error } = await supabase.from("products").select("*"); // Fetch all products
         if (error) throw error;
-        setProducts(data);
+
+        // Generate full URLs for images
+        const productsWithImageUrls = data.map((product) => {
+          // Check if product.image_url is a full URL or just the path
+          let imageUrl = product.image_url;
+          if (!imageUrl.includes("https://")) {
+            imageUrl = `${supabaseUrl}/storage/v1/object/public/product-images/${product.image_url}`;
+          }
+          
+          console.log(`Generated URL for product ${product.name}:`, imageUrl); // Log the URL for debugging
+
+          return { ...product, image_url: imageUrl };
+        });
+
+        setProducts(productsWithImageUrls);
       } catch (error) {
         console.error("Error fetching products:", error.message);
       } finally {
@@ -35,8 +50,6 @@ export default function ProductList() {
 
     fetchProducts();
   }, []);
-
-  console.log(products)
 
   // Handle item click
   const handleItemClick = (itemName) => {
@@ -56,7 +69,7 @@ export default function ProductList() {
       {/* Big Screen */}
       <div className="hidden w-full p-4 sm:block">
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="mx-auto flex max-w-4xl justify-between">
+        <div className="flex justify-between max-w-4xl mx-auto">
           <CategorySidebar handleItemClick={handleItemClick} />
           <ProductDisplay
             selectedItem={selectedItem}
@@ -80,7 +93,7 @@ export default function ProductList() {
       <div className="w-full p-4 sm:hidden">
         <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <div>
-          <div className="mt-4 grid grid-cols-2 justify-center gap-6">
+          <div className="grid justify-center grid-cols-2 gap-6 mt-4">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item) => (
                 <ProductsItem item={item} key={item.id} />

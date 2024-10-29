@@ -1,8 +1,9 @@
+// page
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { supabase, supabaseUrl } from "@/lib/supabase";
 
 export default function Admin() {
   const [name, setName] = useState("");
@@ -36,24 +37,26 @@ export default function Admin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Uploading...");
-
+  
     try {
-      // 1. Upload the image
       let imageUrl = "";
       if (image) {
+        // Upload the image to Supabase storage
         const { data, error } = await supabase.storage
           .from("product-images")
           .upload(`public/${image.name}`, image);
-
+  
         if (error) throw error;
-        imageUrl = data.path;
+  
+        // Construct the full URL to the image with the correct path
+        imageUrl = `${supabaseUrl}/storage/v1/object/public/product-images/${data.path}`;
       }
-
-      // 2. Insert the product data with alt set to product name
+  
+      // Insert the product data with `alt` set to `name`
       const { error } = await supabase
         .from("products")
-        .insert([{ name, price, category, image_url: imageUrl, alt: name }]); // `alt` is automatically set to `name`
-
+        .insert([{ name, price, category, image_url: imageUrl, alt: name }]);
+  
       if (error) throw error;
       setStatus("Product added successfully!");
       setName("");
@@ -64,6 +67,7 @@ export default function Admin() {
       setStatus(`Error: ${error.message}`);
     }
   };
+  
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();

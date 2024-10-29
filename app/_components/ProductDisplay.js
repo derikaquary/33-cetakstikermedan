@@ -1,6 +1,6 @@
 import ProductsItem from "./ProductsItem";
 import OrderedItem from "./OrderedItem";
-import { products } from "../_data/productsList";
+
 
 export default function ProductDisplay({ selectedItem, filteredProducts }) {
   return (
@@ -11,7 +11,7 @@ export default function ProductDisplay({ selectedItem, filteredProducts }) {
           <OrderedItem item={selectedItem} />
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-3 justify-end gap-6 gap-y-10">
+        <div className="grid justify-end grid-cols-3 gap-6 mt-4 gap-y-10">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
               <ProductsItem item={item} key={item.id} />
