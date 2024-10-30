@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { supabase } from "@/lib/supabase"; // Make sure this path is correct
 import ArticleItem from "./ArticleItem";
 
@@ -11,6 +10,7 @@ export default function LatestArticle() {
   const [startX, setStartX] = useState(0); // Initial x position when dragging starts
   const [scrollLeft, setScrollLeft] = useState(0); // Initial scroll position when dragging starts
   const [articles, setArticles] = useState([]); // State to store articles from Supabase
+  const [selectedArticle, setSelectedArticle] = useState(null); // State to store clicked article's title and text
 
   // Fetch articles from Supabase
   useEffect(() => {
@@ -52,12 +52,17 @@ export default function LatestArticle() {
     scrollContainer.scrollLeft = scrollLeft - walk; // Update the scroll position
   };
 
+  // Handle clicking on an article item
+  const handleArticleClick = (article) => {
+    setSelectedArticle(article); // Set the clicked article as selected
+  };
+
   return (
     <>
       {/* Big Screen */}
-      <div className="justify-center hidden w-full px-4 py-10 bg-gray-200 sm:flex">
-        <div className="flex flex-col w-full gap-4 sm:max-w-4xl">
-          <div className="items-center justify-center hidden gap-8 sm:mx-auto sm:flex sm:w-full">
+      <div className="hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex">
+        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
+          <div className="hidden items-center justify-center gap-8 sm:mx-auto sm:flex sm:w-full">
             <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
             <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
               Latest Article
@@ -74,16 +79,27 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {articles.map((item) => (
-              <div key={item.id} className="w-[300px] flex-shrink-0">
+              <div key={item.id} className="w-[300px] flex-shrink-0" onClick={() => handleArticleClick(item)}>
                 <ArticleItem item={item} />
               </div>
             ))}
           </div>
+          <div className="bg-green-400 p-4 text-white">
+            {selectedArticle ? (
+              <>
+                <h2 className="text-lg font-semibold mb-2">{selectedArticle.title}</h2>
+                <p>{selectedArticle.text}</p>
+              </>
+            ) : (
+              <p>Select an article to view details here.</p>
+            )}
+          </div>
         </div>
       </div>
+
       {/* Small Screen */}
-      <div className="flex justify-center w-full px-4 py-10 bg-gray-200 sm:hidden">
-        <div className="flex flex-col w-full gap-4 sm:max-w-4xl">
+      <div className="flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden">
+        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
           <div className="flex items-center justify-center gap-8 sm:mx-auto sm:hidden sm:w-full sm:max-w-4xl">
             <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
             <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
@@ -101,10 +117,20 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {articles.map((item) => (
-              <div key={item.id} className="w-[300px] flex-shrink-0">
+              <div key={item.id} className="w-[300px] flex-shrink-0" onClick={() => handleArticleClick(item)}>
                 <ArticleItem item={item} />
               </div>
             ))}
+          </div>
+          <div className="bg-green-400 p-4 text-white">
+            {selectedArticle ? (
+              <>
+                <h2 className="text-lg font-semibold mb-2">{selectedArticle.title}</h2>
+                <p>{selectedArticle.text}</p>
+              </>
+            ) : (
+              <p>Select an article to view details here.</p>
+            )}
           </div>
         </div>
       </div>
