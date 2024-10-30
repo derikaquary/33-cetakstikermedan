@@ -1,45 +1,48 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
+import { supabase } from "@/lib/supabase"; // Ensure the correct path to your Supabase client
 
 export default function Carousel() {
-  // Memoize the images array to prevent it from being recreated on every render
-  const images = useMemo(() => [
-    "/image1.jpeg",
-    "/image2.jpeg",
-    "/image3.jpeg",
-    "/image4.jpeg",
-  ], []); // Add an empty array as the second argument to memoize it only once
-
+  const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
 
   const slideInterval = 3000; // Time in milliseconds between slides
 
+  // Fetch the first four images from Supabase
+  useEffect(() => {
+    const fetchImages = async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("image_url") // Adjust column name if necessary
+        .limit(4); // Fetch only the first four images
+
+      if (error) {
+        console.error("Error fetching images:", error);
+      } else {
+        setImages(data.map((product) => product.image_url));
+      }
+    };
+
+    fetchImages();
+  }, []);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % images.length;
-        return nextIndex;
-      });
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, slideInterval);
 
     return () => clearInterval(intervalId);
-  }, [images, slideInterval]); // 'images' is now memoized, no unnecessary re-renders
+  }, [images.length]);
 
   const handlePrevSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex - 1 + images.length) % images.length;
-      return newIndex;
-    });
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const handleNextSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = (prevIndex + 1) % images.length;
-      return nextIndex;
-    });
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   return (
@@ -56,8 +59,6 @@ export default function Carousel() {
               className="relative flex-shrink-0 w-full h-full rounded-2xl"
               key={index}
             >
-              {" "}
-              {/* Added flex-shrink-0 and relative */}
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
@@ -104,8 +105,6 @@ export default function Carousel() {
         >
           {images.map((image, index) => (
             <div className="relative flex-shrink-0 w-full h-full" key={index}>
-              {" "}
-              {/* Added flex-shrink-0 and relative */}
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}

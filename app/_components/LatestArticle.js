@@ -3,6 +3,12 @@
 import { useRef, useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase"; // Make sure this path is correct
 import ArticleItem from "./ArticleItem";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export default function LatestArticle() {
   const scrollRef = useRef(null); // Reference to the scrollable container
@@ -60,7 +66,7 @@ export default function LatestArticle() {
   return (
     <>
       {/* Big Screen */}
-      <div className="hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex">
+      <div className={`${poppins.className} hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex`}>
         <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
           <div className="hidden items-center justify-center gap-8 sm:mx-auto sm:flex sm:w-full">
             <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
@@ -79,15 +85,21 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {articles.map((item) => (
-              <div key={item.id} className="w-[300px] flex-shrink-0" onClick={() => handleArticleClick(item)}>
+              <div
+                key={item.id}
+                className="w-[300px] flex-shrink-0"
+                onClick={() => handleArticleClick(item)}
+              >
                 <ArticleItem item={item} />
               </div>
             ))}
           </div>
-          <div className="bg-green-400 p-4 text-white">
+          <div className="p-4  text-black">
             {selectedArticle ? (
               <>
-                <h2 className="text-lg font-semibold mb-2">{selectedArticle.title}</h2>
+                <h2 className="mb-2 text-lg font-semibold">
+                  {selectedArticle.title}
+                </h2>
                 <p>{selectedArticle.text}</p>
               </>
             ) : (
@@ -98,7 +110,7 @@ export default function LatestArticle() {
       </div>
 
       {/* Small Screen */}
-      <div className="flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden">
+      <div className={`${poppins.className} flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden`}>
         <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
           <div className="flex items-center justify-center gap-8 sm:mx-auto sm:hidden sm:w-full sm:max-w-4xl">
             <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
@@ -117,15 +129,21 @@ export default function LatestArticle() {
             onMouseMove={handleMouseMove} // Handle mouse move
           >
             {articles.map((item) => (
-              <div key={item.id} className="w-[300px] flex-shrink-0" onClick={() => handleArticleClick(item)}>
+              <div
+                key={item.id}
+                className="w-[300px] flex-shrink-0"
+                onClick={() => handleArticleClick(item)}
+              >
                 <ArticleItem item={item} />
               </div>
             ))}
           </div>
-          <div className="bg-green-400 p-4 text-white">
+          <div className="p-4 text-black">
             {selectedArticle ? (
               <>
-                <h2 className="text-lg font-semibold mb-2">{selectedArticle.title}</h2>
+                <h2 className="mb-2 text-lg font-semibold">
+                  {selectedArticle.title}
+                </h2>
                 <p>{selectedArticle.text}</p>
               </>
             ) : (
