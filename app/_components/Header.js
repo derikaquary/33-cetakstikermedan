@@ -45,7 +45,7 @@ function Header() {
   return (
     <div>
       {/* Big Screen */}
-      <div className="flex justify-center w-full bg-orange-500">
+      <div className="flex w-full justify-center bg-orange-500">
         <div className="relative z-[1000] hidden w-full max-w-4xl flex-col bg-orange-500 sm:flex">
           {/* Social Media Icons */}
           <div className="flex items-center justify-center gap-9 border-b-[1px] py-2">
@@ -129,7 +129,7 @@ function Header() {
             size={30}
             color="white"
             onClick={toggleMenu}
-            className="cursor-pointer hamburger"
+            className="hamburger cursor-pointer"
           />
         </div>
 
@@ -142,7 +142,7 @@ function Header() {
             transition: "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out",
           }}
         >
-          <div className="flex flex-col gap-3 px-3 py-2 text-white menu bg-black/50">
+          <div className="menu flex flex-col gap-3 bg-black/50 px-3 py-2 text-white">
             <Link href="/" className="flex items-center gap-3">
               <FaHome />
               <p>Home</p>
@@ -151,10 +151,10 @@ function Header() {
               <BiCategory />
               <p>Category</p>
             </div>
-            <div className="flex gap-3 first:items-center">
+            {/* <div className="flex gap-3 first:items-center">
               <FaCodeBranch />
               <p>Branch</p>
-            </div>
+            </div> */}
             <div className="flex gap-3 first:items-center">
               <FaPhotoVideo /> <p>Photobook</p>
             </div>

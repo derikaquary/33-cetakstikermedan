@@ -17,7 +17,8 @@ export default function Carousel() {
       const { data, error } = await supabase
         .from("products")
         .select("image_url") // Adjust column name if necessary
-        .limit(4); // Fetch only the first four images
+        .order("id", { ascending: true }) // Sort by 'id' or another column in ascending order
+        .limit(4); // Fetch the first 4 images
 
       if (error) {
         console.error("Error fetching images:", error);
@@ -38,7 +39,9 @@ export default function Carousel() {
   }, [images.length]);
 
   const handlePrevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+    );
   };
 
   const handleNextSlide = () => {
@@ -48,27 +51,27 @@ export default function Carousel() {
   return (
     <>
       {/* Big Screen */}
-      <div className="relative mx-auto hidden h-[300px] w-full overflow-hidden sm:block max-w-4xl">
+      <div className="relative mx-auto hidden h-[300px] w-full max-w-4xl overflow-hidden sm:block">
         <div
-          className="relative flex w-full h-full transition-transform duration-500 ease-in-out"
+          className="relative flex h-full w-full transition-transform duration-500 ease-in-out"
           ref={carouselRef}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((image, index) => (
             <div
-              className="relative flex-shrink-0 w-full h-full rounded-2xl"
+              className="relative h-full w-full flex-shrink-0 rounded-2xl"
               key={index}
             >
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
                 fill
-                className="object-cover rounded-2xl"
+                className="rounded-2xl object-cover"
               />
             </div>
           ))}
         </div>
-        <div className="absolute bottom-0 flex justify-center w-full space-x-4">
+        <div className="absolute bottom-0 flex w-full justify-center space-x-4">
           {images.map((_, index) => (
             <div
               key={index}
@@ -81,7 +84,7 @@ export default function Carousel() {
         </div>
         <div className="absolute left-0 top-[60px] p-4">
           <button
-            className="p-2 text-white rounded-full bg-gray-500/30 hover:bg-blue-700"
+            className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
             onClick={handlePrevSlide}
           >
             {"<"}
@@ -89,7 +92,7 @@ export default function Carousel() {
         </div>
         <div className="absolute right-0 top-[60px] p-4">
           <button
-            className="p-2 text-white rounded-full bg-gray-500/30 hover:bg-blue-700"
+            className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
             onClick={handleNextSlide}
           >
             {">"}
@@ -99,22 +102,22 @@ export default function Carousel() {
       {/* Small Screen */}
       <div className="relative h-[200px] w-full overflow-hidden sm:hidden">
         <div
-          className="relative flex w-full h-full transition-transform duration-500 ease-in-out"
+          className="relative flex h-full w-full transition-transform duration-500 ease-in-out"
           ref={carouselRef}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((image, index) => (
-            <div className="relative flex-shrink-0 w-full h-full" key={index}>
+            <div className="relative h-full w-full flex-shrink-0" key={index}>
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
                 fill
-                className="object-cover rounded-2xl"
+                className="rounded-2xl object-cover"
               />
             </div>
           ))}
         </div>
-        <div className="absolute bottom-0 flex justify-center w-full space-x-4">
+        <div className="absolute bottom-0 flex w-full justify-center space-x-4">
           {images.map((_, index) => (
             <div
               key={index}
@@ -127,7 +130,7 @@ export default function Carousel() {
         </div>
         <div className="absolute left-0 top-[60px] p-4">
           <button
-            className="p-2 text-white rounded-full bg-gray-500/30 hover:bg-blue-700"
+            className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
             onClick={handlePrevSlide}
           >
             {"<"}
@@ -135,7 +138,7 @@ export default function Carousel() {
         </div>
         <div className="absolute right-0 top-[60px] p-4">
           <button
-            className="p-2 text-white rounded-full bg-gray-500/30 hover:bg-blue-700"
+            className="rounded-full bg-gray-500/30 p-2 text-white hover:bg-blue-700"
             onClick={handleNextSlide}
           >
             {">"}
