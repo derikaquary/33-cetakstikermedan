@@ -1,7 +1,8 @@
 "use client";
 
+import ReactMarkdown from "react-markdown";
 import { useRef, useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase"; // Make sure this path is correct
+import { supabase } from "@/lib/supabase"; // Ensure this path is correct
 import ArticleItem from "./ArticleItem";
 import { Poppins } from "next/font/google";
 
@@ -24,7 +25,7 @@ export default function LatestArticle() {
       const { data, error } = await supabase
         .from("article")
         .select("*")
-        .order("created_at", { ascending: false }); // Adjust order if needed
+        .order("created_at", { ascending: false });
 
       if (error) {
         console.error("Error fetching articles:", error);
@@ -66,7 +67,9 @@ export default function LatestArticle() {
   return (
     <>
       {/* Big Screen */}
-      <div className={`${poppins.className} hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex`}>
+      <div
+        className={`${poppins.className} hidden w-full justify-center bg-gray-200 px-4 py-10 sm:flex`}
+      >
         <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
           <div className="hidden items-center justify-center gap-8 sm:mx-auto sm:flex sm:w-full">
             <div className="h-[3px] w-full bg-gray-400 sm:w-full"></div>
@@ -77,56 +80,12 @@ export default function LatestArticle() {
           </div>
           {/* Horizontal scrolling container */}
           <div
-            ref={scrollRef} // Attach the ref to the scrollable container
-            className={`flex gap-3 overflow-x-auto cursor-${isDragging ? "grabbing" : "grab"}`} // Dynamic cursor
-            onMouseDown={handleMouseDown} // Start dragging
-            onMouseLeave={handleMouseUp} // Stop dragging if the mouse leaves the container
-            onMouseUp={handleMouseUp} // Stop dragging on mouse up
-            onMouseMove={handleMouseMove} // Handle mouse move
-          >
-            {articles.map((item) => (
-              <div
-                key={item.id}
-                className="w-[300px] flex-shrink-0"
-                onClick={() => handleArticleClick(item)}
-              >
-                <ArticleItem item={item} />
-              </div>
-            ))}
-          </div>
-          <div className="p-4  text-black">
-            {selectedArticle ? (
-              <>
-                <h2 className="mb-2 text-lg font-semibold">
-                  {selectedArticle.title}
-                </h2>
-                <p>{selectedArticle.text}</p>
-              </>
-            ) : (
-              <p>Select an article to view details here.</p>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Small Screen */}
-      <div className={`${poppins.className} flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden`}>
-        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
-          <div className="flex items-center justify-center gap-8 sm:mx-auto sm:hidden sm:w-full sm:max-w-4xl">
-            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
-            <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
-              Latest Article
-            </div>
-            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
-          </div>
-          {/* Horizontal scrolling container */}
-          <div
-            ref={scrollRef} // Attach the ref to the scrollable container
-            className={`flex gap-3 overflow-x-auto cursor-${isDragging ? "grabbing" : "grab"}`} // Dynamic cursor
-            onMouseDown={handleMouseDown} // Start dragging
-            onMouseLeave={handleMouseUp} // Stop dragging if the mouse leaves the container
-            onMouseUp={handleMouseUp} // Stop dragging on mouse up
-            onMouseMove={handleMouseMove} // Handle mouse move
+            ref={scrollRef}
+            className={`flex gap-3 overflow-x-auto cursor-${isDragging ? "grabbing" : "grab"}`}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseUp}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
           >
             {articles.map((item) => (
               <div
@@ -144,7 +103,53 @@ export default function LatestArticle() {
                 <h2 className="mb-2 text-lg font-semibold">
                   {selectedArticle.title}
                 </h2>
-                <p>{selectedArticle.text}</p>
+                <ReactMarkdown>{selectedArticle.text}</ReactMarkdown>
+              </>
+            ) : (
+              <p>Select an article to view details here.</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Small Screen */}
+      <div
+        className={`${poppins.className} flex w-full justify-center bg-gray-200 px-4 py-10 sm:hidden`}
+      >
+        <div className="flex w-full flex-col gap-4 sm:max-w-4xl">
+          <div className="flex items-center justify-center gap-8 sm:mx-auto sm:hidden sm:w-full sm:max-w-4xl">
+            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
+            <div className="w-[100px] text-center text-xl font-semibold text-orange-500 sm:w-full sm:text-3xl">
+              Latest Article
+            </div>
+            <div className="h-[3px] w-[40px] bg-gray-400 sm:w-full"></div>
+          </div>
+          {/* Horizontal scrolling container */}
+          <div
+            ref={scrollRef}
+            className={`flex gap-3 overflow-x-auto cursor-${isDragging ? "grabbing" : "grab"}`}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseUp}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+          >
+            {articles.map((item) => (
+              <div
+                key={item.id}
+                className="w-[300px] flex-shrink-0"
+                onClick={() => handleArticleClick(item)}
+              >
+                <ArticleItem item={item} />
+              </div>
+            ))}
+          </div>
+          <div className="p-4 text-black">
+            {selectedArticle ? (
+              <>
+                <h2 className="mb-2 text-lg font-semibold">
+                  {selectedArticle.title}
+                </h2>
+                <ReactMarkdown>{selectedArticle.text}</ReactMarkdown>
               </>
             ) : (
               <p>Select an article to view details here.</p>
